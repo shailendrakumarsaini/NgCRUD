@@ -1,0 +1,49 @@
+<div class="panel panel-primary" *ngIf="empDetail">
+  <div class="panel-heading"><b>HI </b>{{empDetail.name}}
+    <button class="btn btn-info btn-sm pull-right" [routerLink]="['../../viewemp']">Back</button>
+  </div>
+  <div class="panel-body">
+      <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr class="bg-primary">
+                <th>Gender</th>
+                <th>Date Of Birth</th>
+                <th>Contact Preference</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Password</th>
+              </tr>
+            </thead> 
+            <tbody>
+              <tr>
+                <td>{{ empDetail.gender }}</td>
+                <td>{{ empDetail.dob }}</td>
+                <td>{{ empDetail.contactPreference }}</td>
+                <td>{{ empDetail.primaryemail == "" || empDetail.primaryemail == null ? '-----------------' : empDetail.primaryemail}}</td>
+                <td>{{ (empDetail.phone == "" || empDetail.phone == null) ? '-----------------' : empDetail.phone}}</td>
+                <td>
+                  <div [ngSwitch]="empDetail.department">
+                    <div *ngSwitchCase="1">Help Desk</div>
+                    <div *ngSwitchCase="2">IT</div>
+                    <div *ngSwitchCase="3">HR</div>
+                    <div *ngSwitchCase="4">Sales</div>
+                    <div *ngSwitchDefault>You Haven't Select</div>
+                  </div>
+                </td>
+                <td>
+                  <div [ngSwitch]="empDetail.IsActive">
+                    <div *ngSwitchCase="true">Active</div>
+                    <div *ngSwitchCase="false">InActive</div>
+                  </div>
+                </td>
+                <td>{{empDetail.password}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    <!-- <pre>{{empDetail |json}}</pre> -->
+  </div>
+</div>

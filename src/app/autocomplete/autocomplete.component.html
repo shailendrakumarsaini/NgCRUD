@@ -1,0 +1,19 @@
+
+<div class="col-md-4">
+  <div class="input-group">
+    <input type="text" matInput [formControl]="searchTerm" [matAutocomplete]="auto" class="form-control" placeholder="Search books ...">
+
+     
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let i of Users" [value]="i.name">
+          {{ i.name }}
+        </mat-option>
+      </mat-autocomplete>
+    <span class="input-group-addon"><i class="glyphicon glyphicon-search" (click)="searchFun(searchTerm)"></i></span>
+  </div>
+</div>
+
+
+
+
+

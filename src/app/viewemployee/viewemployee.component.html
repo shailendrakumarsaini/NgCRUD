@@ -1,0 +1,116 @@
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      Employee Information
+      <button class="btn btn-success btn-sm pull-right" [routerLink]="['../addEmp']">Add Employee</button>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search Employee by Name" autocomplete="off">
+      </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" *ngIf="employees && employees.length">
+              <thead>
+                <tr class="bg-primary">
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Phone</th>
+                  <th>Department</th>
+                  <th>Action</th>
+                </tr>
+              </thead> 
+              <tbody>
+                <tr *ngFor="let employee of filteredEmployees" [class.bg-info]="employee.id == selectedEmployeeId">
+                  <td>{{ employee.name |uppercase}}</td>
+                  <td>{{ employee.gender }}</td>
+                  <td>{{ (employee.phone == "" || employee.phone == null) ? '-----------------' : employee.phone}}</td>
+                  <td>
+                    <!-- {{ employee.department}}<br> -->
+                    <div [ngSwitch]="employee.department">
+                      <div *ngSwitchCase="1">Help Desk</div>
+                      <div *ngSwitchCase="2">IT</div>
+                      <div *ngSwitchCase="3">HR</div>
+                      <div *ngSwitchCase="4">Sales</div>
+                      <div *ngSwitchDefault>You Haven't Select</div>
+                    </div> 
+                  </td>
+                  <td> 
+                    <div class="btn-toolbar">
+                      <a data-target="#bd-example-modal" data-toggle="modal" (click)="openModel(employee.id)"><button class="btn btn-info">Details</button></a>
+                      <button class="btn btn-primary" [routerLink]="['../details',employee.id]">Details</button>
+                      <button class="btn btn-info" [routerLink]="['../edit',employee.id]">Edit</button>
+                      <button class="btn btn-danger" (click)="deleteEmploueeFun(employee.id)">Delete</button>
+                    </div>
+                  </td> 
+                </tr> 
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+
+
+  <div class="modal fade login-modal-main" id="bd-example-modal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="width:80%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="modal-title">Employee Details</h3>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+              <div class="login-modal">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" *ngIf="empDetail">
+                        <thead>
+                          <tr class="bg-primary">
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Date Of Birth</th>
+                            <th>Contact Preference</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Password</th>
+                          </tr>
+                        </thead> 
+                        <tbody>
+                          <tr>
+                            <td>{{ empDetail.name |uppercase}}</td>
+                            <td>{{ empDetail.gender }}</td>
+                            <td>{{ empDetail.dob | date:'dd-MM-yyy'}}</td>
+                            <td>{{ empDetail.contactPreference }}</td>
+                            <td>{{ empDetail.primaryemail == "" || empDetail.primaryemail == null ? '-----------------' : empDetail.primaryemail}}</td>
+                            <td>{{ (empDetail.phone == "" || empDetail.phone == null) ? '-----------------' : empDetail.phone}}</td>
+                            <td>
+                              <div [ngSwitch]="empDetail.department">
+                                <div *ngSwitchCase="1">Help Desk</div>
+                                <div *ngSwitchCase="2">IT</div>
+                                <div *ngSwitchCase="3">HR</div>
+                                <div *ngSwitchCase="4">Sales</div>
+                                <div *ngSwitchDefault>You Haven't Select</div>
+                              </div>
+                            </td>
+                            <td>
+                              <div [ngSwitch]="empDetail.IsActive">
+                                <div *ngSwitchCase="true">Active</div>
+                                <div *ngSwitchCase="false">InActive</div>
+                              </div>
+                            </td>
+                            <td>{{empDetail.password}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>

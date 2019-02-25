@@ -1,0 +1,51 @@
+<div class="signup-form">
+  <form #userForm="ngForm" (ngSubmit)="docLogin(userForm.value)">
+
+    <h3 class="panel-title">Please login for in Clinic lite </h3>
+    <hr>
+
+    <div class="form-group">
+      <input #nameRef="ngModel" maxlength="12" minlength="5" class="form-control input-sm" name="username" [(ngModel)]="username"
+        placeholder="Username" required>
+      <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class=" alert alert-danger">
+        <div [hidden]="!nameRef.errors.required" >
+          please enter username !
+        </div>
+        <div [hidden]="!nameRef.errors.minlength" >
+          please enter minimum 5 character !
+        </div>
+        <div [hidden]="!nameRef.errors.maxlength" >
+          Not enter above 12 character !
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <input type="email" id="contactemail" class="form-control"
+        name="email" #emailUser="ngModel" [(ngModel)]="email" placeholder="Email" required="required" [ngClass]>
+      <div *ngIf="emailUser.errors && (emailUser.touched || emailUser.dirty)" class="alert alert-danger">
+        <div *ngIf="emailUser.errors.required">Email is Required</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <input type="password" class="form-control" #pwd="ngModel" maxlength="18" minlength="6" name="password" [(ngModel)]="password" placeholder="Password" required="required">
+      <div *ngIf="pwd.errors && (pwd.touched || pwd.dirty)" class="alert alert-danger">
+        <div *ngIf="pwd.errors.required">Password is Required</div>
+        <div *ngIf="pwd.errors.minlength">6 character is Required</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <button class="btn btn-danger" [disabled]="userForm.invalid" type="submit">Login</button>
+    </div>
+  </form>
+
+</div>
+
+
+

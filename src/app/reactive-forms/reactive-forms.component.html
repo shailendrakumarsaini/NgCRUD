@@ -1,0 +1,138 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Employee Form( Template Driven Approach)
+    <button class="btn btn-info btn-sm pull-right" [routerLink]="['/viewemp']">Go Back</button>
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="formGroupControl" (ngSubmit)="onSubmit(formGroupControl.value)">
+      <div class="form-group" 
+          [class.has-error]="formErrors.nameControl"
+          [class.has-success]="fm.nameControl.valid"  >
+        <label class="control-label">Name</label>
+        <input type="text" formControlName="nameControl" [(ngModel)]="empModel.name" class="form-control" minlength="5" (blur)="logValidationMessages()">
+        <div *ngIf="formErrors.nameControl" class="help-block">
+          {{formErrors.nameControl}}
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="form-group col-md-4" 
+            [class.has-error]="formErrors.genderControl"
+            [class.has-success]="fm.genderControl.valid">
+          <label class="control-label">Gender</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio"  formControlName="genderControl" [(ngModel)]="empModel.gender" (blur)="logValidationMessages()" value="male">
+              Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" formControlName="genderControl" [(ngModel)]="empModel.gender" (blur)="logValidationMessages()" value="female">
+              Female
+            </label>
+          </div>
+          <div *ngIf="formErrors.genderControl" class="help-block">
+           {{formErrors.genderControl}}
+          </div>
+        </div>
+
+        <div class="control-group col-md-4" 
+            [class.has-error]="formErrors.contactPreferenceControl"
+            [class.has-success]="fm.contactPreferenceControl.valid">
+          <label class="control-label">Contact Preference</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio" formControlName="contactPreferenceControl" [(ngModel)]="empModel.contactPreference" (blur)="logValidationMessages()" value="phone">Phone
+            </label>
+            <label class="radio-inline">
+              <input type="radio" formControlName="contactPreferenceControl" [(ngModel)]="empModel.contactPreference" (blur)="logValidationMessages()" value="email">Email
+            </label>
+          </div>
+          <div *ngIf="formErrors.contactPreferenceControl" class="help-block">
+            {{formErrors.contactPreferenceControl}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" 
+          [class.has-error]="formErrors.phoneControl"
+          [class.has-success]="fm.phoneControl.valid">
+        <label class="control-label">Phone</label>
+        <input type="text" formControlName="phoneControl" [(ngModel)]="empModel.phone" (blur)="logValidationMessages()" OnlyNumberWithLength MinDigit="10" MaxDigit="10" class="form-control">
+        <div *ngIf="formErrors.phoneControl" class="help-block">
+            {{formErrors.phoneControl}}
+        </div>
+      </div>
+
+
+      <div class="form-group" 
+            [class.has-error]="formErrors.primaryemailControl"
+            [class.has-success]="fm.primaryemailControl.valid">
+        <label class="control-label">Primary Email</label>
+        <input type="email" formControlName="primaryemailControl" [(ngModel)]="empModel.primaryEmail" class="form-control" (blur)="logValidationMessages()">
+        <div *ngIf="formErrors.primaryemailControl" class="help-block">
+          {{formErrors.primaryemailControl}}
+        </div>
+      </div>
+
+
+
+      <div class="form-group" 
+          [class.has-error]="formErrors.departmentControl"
+          [class.has-success]="fm.departmentControl.valid">
+        <label class="control-label">Department</label>
+        <select formControlName="departmentControl" [(ngModel)]="empModel.department" class="form-control" (blur)="logValidationMessages()">
+          <option value="">Select Option</option>
+          <option [value]="dept.id" *ngFor="let dept of Departments">{{dept.name}}</option>
+        </select>
+        <div *ngIf="formErrors.departmentControl" class="help-block">
+         {{formErrors.departmentControl}}
+        </div>
+      </div>
+
+      <div formGroupName="emailGroup">
+        <div class="form-group" [ngClass]="{'has-error': formErrors.email}">
+          <label class="control-label">Email</label>
+            <input type="text" formControlName="email" [(ngModel)]="empModel.email" (blur)="logValidationMessages()" class="form-control">
+            <div class="help-block" *ngIf="formErrors.email">{{formErrors.email}}</div>
+        </div>
+      
+        <div class="form-group" [ngClass]="{'has-error': formErrors.confirmEmail || formErrors.emailGroup}">
+          <label class="control-label">Confirm Email</label>
+            <input type="text" formControlName="confirmEmail" [(ngModel)]="empModel.confirmEmail" (blur)="logValidationMessages()" class="form-control">
+            <span class="help-block" *ngIf="formErrors.confirmEmail || formErrors.emailGroup">
+              {{formErrors.confirmEmail ? formErrors.confirmEmail : formErrors.emailGroup}}
+            </span>
+        </div>
+      </div>
+
+      <div formGroupName="passwordGroup">
+        <div class="form-group" [class.has-error]="formErrors.passwordControl">
+          <label class="control-label">Password</label>
+          <input type="text" [(ngModel)]="empModel.password" formControlName="passwordControl" (blur)="logValidationMessages()" class="form-control">
+          <div class="help-block" *ngIf="formErrors.passwordControl">
+            {{formErrors.passwordControl}}
+          </div>
+        </div>
+
+        <div class="form-group" 
+          [class.has-error]="formErrors.confirmPasswordControl || formErrors.passwordGroup">
+          <label class="control-label">Confirm Password</label>
+          <input type="text" [(ngModel)]="empModel.confirmPassword" formControlName="confirmPasswordControl" (blur)="logValidationMessages()" class="form-control">
+          <div class="help-block" *ngIf="formErrors.confirmPasswordControl || formErrors.passwordGroup">
+            {{formErrors.confirmPasswordControl ? formErrors.confirmPasswordControl : formErrors.passwordGroup}}
+          </div>
+        </div>
+      </div> 
+
+
+      <br>
+      <div class="form-group">
+        <div class="btn-toolbar">
+        <input type="submit" value="Save" class="btn btn-primary" [disabled]="formGroupControl.invalid">
+        <input type="button" value="Clear" class="btn btn-primary" (click)="resetFrom()">
+      </div>
+      </div>
+    </form>
+    <pre><b>Angular Form : </b>{{formGroupControl.value |json}}</pre>
+    <pre><b>Our Employee Model : </b>{{empModel |json}}</pre>
+  </div>
+</div>

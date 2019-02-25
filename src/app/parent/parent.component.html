@@ -1,0 +1,9 @@
+<p>Passing data from child component to parent component(for that click on any employee panel)</p>
+<h2 #h1Variable></h2>
+<div *ngFor="let employee of employees">
+  <div (click)="h1Variable.innerHTML = childRefVariable.employee.name">
+  <!-- <div (click)="logChildDataIntoParentComponent(childRefVariable,h1Variable)"> -->
+    <app-child [employee]="employee" #childRefVariable></app-child>
+  </div>
+</div>
+

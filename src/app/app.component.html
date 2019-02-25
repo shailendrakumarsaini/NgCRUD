@@ -1,0 +1,26 @@
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- <p class="navbar-brand">Welcome</p> -->
+            </div>
+            <ul class="nav navbar-nav">
+                <li routerLink="welcome" routerLinkActive="active"><a >Home</a></li>
+                <li routerLink="login" routerLinkActive="active"><a >Login</a></li>
+                <li routerLink="employee/register" routerLinkActive="active"><a >Register</a></li>
+                <li routerLink="employee/viewemp" routerLinkActive="active" ><a >Employees</a></li>
+                <li routerLink="test" routerLinkActive="active"><a >TestComponent</a></li>
+                <li routerLink="employee/parent" routerLinkActive="active"><a >ParentComponent</a></li>
+                <li routerLink="contProj" routerLinkActive="active"><a >Content Projection</a></li>
+                <li routerLink="auto" routerLinkActive="active"><a>AutoComplete</a></li>
+                <li routerLink="employee/addEmp" routerLinkActive="active"><a>Template Driven Forms</a></li>
+                <li routerLink="employee/reactiveForms" routerLinkActive="active"><a>Reactive Forms</a></li>
+                <li routerLink="logout" routerLinkActive="active"><a>Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- <ng4-loading-spinner [loadingText]="'Please wait...'"> </ng4-loading-spinner> -->
+    <ng4-loading-spinner [template]="template" [loadingText]="'Please wait...'" [zIndex]="99999"></ng4-loading-spinner>
+    <!-- <div *ngIf="showLoadingIndicator" class="spinner"><h2>Loading...</h2></div> -->
+    <router-outlet></router-outlet>
+</div>

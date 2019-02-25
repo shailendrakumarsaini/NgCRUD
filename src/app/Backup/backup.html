@@ -1,0 +1,24 @@
+<div ngModelGroup="passwordGroup"
+[class.has-error]="confirmPasswordControl.touched && confirmPasswordControl.invalid && !confirmPasswordControl.errors?.required">
+<div class="form-group" 
+  [class.has-error]="passwordControl.invalid && passwordControl.touched">
+  <label class="control-label">Password</label>
+  <input type="text" [(ngModel)]="empModel.password" #passwordControl="ngModel" name="password" class="form-control" (input)="confirmPasswordControl.control.updateValueAndValidity()" required>
+  <span class="help-block" *ngIf="passwordControl.touched && passwordControl.errors?.required">
+    Password is required
+  </span>
+</div>
+
+<div class="form-group" 
+  [class.has-error]="confirmPasswordControl.invalid && confirmPasswordControl.touched">
+  <label class="control-label">Confirm Password</label>
+  <input type="text" [(ngModel)]="empModel.confirmPassword" #confirmPasswordControl="ngModel" name="confirmPassword" appConfirmEqualValidator="password" class="form-control" required>
+  <span class="help-block" *ngIf="confirmPasswordControl.touched && confirmPassword.errors?.required">
+    Confirm Password is required
+  </span>
+  <span class="help-block" *ngIf="confirmPasswordControl.touched && confirmPasswordControl.errors?.notEqual &&
+    !confirmPasswordControl.errors?.required">
+    Password and Confirm Password does not match
+  </span>
+</div>
+</div>

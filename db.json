@@ -1,0 +1,136 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "fullName": "Mark",
+      "contactPreference": "email",
+      "email": "mark@email.com",
+      "phone": "5641238971",
+      "skills": [
+        {
+          "skillName": "C#",
+          "experienceInYears": 1,
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "Java",
+          "experienceInYears": 2,
+          "proficiency": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "John",
+      "contactPreference": "phone",
+      "email": "john@email.com",
+      "phone": "3242138971",
+      "skills": [
+        {
+          "skillName": "Angular",
+          "experienceInYears": 2,
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "HTML",
+          "experienceInYears": 2,
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "LINQ",
+          "experienceInYears": 3,
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "fullName": "Sunny",
+      "contactPreference": "email",
+      "email": "sunny@gmail.com",
+      "phone": "7078276728",
+      "skills": {
+        "skillName": "Angular",
+        "experienceInYears": "2",
+        "proficiency": "intermediate"
+      },
+      "id": 3
+    },
+    {
+      "fullName": "sdfs",
+      "contactPreference": "email",
+      "email": "hbhbhjb",
+      "phone": "88908908908",
+      "skills": {
+        "skillName": " bjbjhb",
+        "experienceInYears": "2",
+        "proficiency": "intermediate"
+      },
+      "id": 4
+    }
+  ],
+  "Emp": [
+    {
+      "name": "Aastha tyaghi",
+      "gender": "female",
+      "dob": "2018-12-28T12:06:20.000Z",
+      "contactPreference": "phone",
+      "phone": "4321065320",
+      "IsActive": false,
+      "department": "4",
+      "password": "7878",
+      "confirmPassword": "7878",
+      "id": 4
+    },
+    {
+      "name": "Neha Chaudhari",
+      "gender": "female",
+      "dob": "2018-12-15T13:03:56.000Z",
+      "contactPreference": "phone",
+      "phone": "3453543553",
+      "IsActive": true,
+      "department": "3",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": 5
+    },
+    {
+      "name": "Harish",
+      "gender": "male",
+      "dob": "2018-12-31T09:13:35.807Z",
+      "contactPreference": "phone",
+      "phone": "5465454646",
+      "primaryemail": "harish@gmail.com",
+      "IsActive": true,
+      "department": "2",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 8
+    },
+    {
+      "name": "Sunny",
+      "gender": "male",
+      "dob": "1996-02-08T18:30:00.000Z",
+      "contactPreference": "phone",
+      "phone": "7078276728",
+      "primaryemail": "sunny@gmail.com",
+      "IsActive": true,
+      "department": "2",
+      "password": "1234",
+      "confirmPassword": "1234",
+      "id": 9
+    },
+    {
+      "name": "Waheed ",
+      "gender": "male",
+      "dob": "2019-02-07T12:43:59.125Z",
+      "contactPreference": "phone",
+      "phone": "6465454654",
+      "primaryemail": "waheed@gmail.com",
+      "IsActive": true,
+      "department": "2",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": 10
+    }
+  ]
+}
