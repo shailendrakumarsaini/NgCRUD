@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class TestComponent implements OnInit {
-
+  username;
+  email;
+  password;
   constructor(public http:HttpClient, public router:Router) { }
 
   ngOnInit() {

@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
+  username;
+  password;
+  cc;
   constructor(private router:Router) {}
   ngOnInit() {}
 

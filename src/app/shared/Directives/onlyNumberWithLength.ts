@@ -22,7 +22,6 @@ export class OnlyNumberWithLengthDirective {
     @HostListener('keydown', ['$event'])
     onKeyDown(event: KeyboardEvent) {
         let e = <KeyboardEvent>event;
-debugger;
         if ((
         (this.specialKeys.indexOf(event.which) > -1) ||
         // to allow backspace, enter, escape, arrows  

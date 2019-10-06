@@ -143,7 +143,12 @@ export class ReactiveFormsComponent implements OnInit {
     }
   }
 
+
+  resetFrom(){}
+
 }
+
+
 
 // function matchEmails(group: AbstractControl): { [key: string]: any } | null {
 //   const emailControl = group.get('email');
